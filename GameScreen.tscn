@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxj2mprf2rsbd"]
+
+[ext_resource type="Script" uid="uid://x2g37lloyg85" path="res://game_screen.gd" id="1_qufq8"]
+[ext_resource type="PackedScene" uid="uid://cfxhmt4lrnxyf" path="res://entities/player/Player.tscn" id="1_vau7r"]
+[ext_resource type="PackedScene" uid="uid://b7qnxedrwd54f" path="res://entities/enemies/dart.tscn" id="2_mnua3"]
+
+[node name="GameScreen" type="Node2D"]
+script = ExtResource("1_qufq8")
+
+[node name="Player" parent="." instance=ExtResource("1_vau7r")]
+position = Vector2(253, 140)
+
+[node name="Dart" parent="." instance=ExtResource("2_mnua3")]
+position = Vector2(-177, -187)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

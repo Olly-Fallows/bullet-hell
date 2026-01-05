@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://jca48t5qbo3o"]
+
+[ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="1_yvat8"]
+[ext_resource type="Texture2D" uid="uid://cs57hc0dkpxb8" path="res://assets/sprites/shot.png" id="2_osmsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osmsx"]
+size = Vector2(4, 4)
+
+[node name="Slug" type="Area2D"]
+script = ExtResource("1_yvat8")
+metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_osmsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_osmsx")
