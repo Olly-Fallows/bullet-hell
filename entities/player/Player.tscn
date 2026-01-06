@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfxhmt4lrnxyf"]
+[gd_scene load_steps=10 format=3 uid="uid://cfxhmt4lrnxyf"]
 
 [ext_resource type="Script" uid="uid://bktrblpjrdtuu" path="res://entities/player/player.gd" id="1_eaotn"]
 [ext_resource type="Texture2D" uid="uid://djgodn5qqphkb" path="res://assets/sprites/player-ship.png" id="1_mab2k"]
@@ -6,11 +6,16 @@
 [ext_resource type="Script" uid="uid://b6vfcjha302s0" path="res://scripts/types/PlayerBodyStats.gd" id="3_g3lhm"]
 [ext_resource type="Script" uid="uid://bj21e4ryiyrs7" path="res://scripts/types/PlayerAttackStats.gd" id="4_4pwj0"]
 [ext_resource type="Script" uid="uid://c1psqytc4e2dd" path="res://entities/player/gun.gd" id="6_4pwj0"]
+[ext_resource type="Script" uid="uid://c3j028e7gb1jb" path="res://scripts/types/Hurtbox.gd" id="7_fmb3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rl6fg"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pwj0"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="RigidBody2D" groups=["player"]]
+linear_damp = 0.1
 script = ExtResource("1_eaotn")
 
 [node name="PlayerShip" type="Sprite2D" parent="."]
@@ -20,6 +25,14 @@ script = ExtResource("3_4pwj0")
 [node name="PlayerBodyStats" type="Node2D" parent="."]
 script = ExtResource("3_g3lhm")
 metadata/_custom_type_script = "uid://b6vfcjha302s0"
+
+[node name="Hurtbox" type="Area2D" parent="PlayerBodyStats"]
+collision_mask = 2
+script = ExtResource("7_fmb3c")
+metadata/_custom_type_script = "uid://c3j028e7gb1jb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBodyStats/Hurtbox"]
+shape = SubResource("CircleShape2D_rl6fg")
 
 [node name="PlayerAttackStats" type="Node2D" parent="."]
 script = ExtResource("4_4pwj0")

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 @export
 var speed: float = 100
@@ -17,12 +17,16 @@ var screen_size = get_viewport_rect().size
 
 func _ready() -> void:
 	$Health.dead.connect(queue_free)
+	$Hitbox.hit.connect(func(_box):
+		queue_free())
 
 func _physics_process(delta: float) -> void:
+	if player == null or not player.is_node_ready():
+		return
 	if charging:
 		target_vel = (target_pos-global_position).normalized()*speed*1.5
-		velocity = velocity.lerp(target_vel, acceleration*2*delta)
-		if (target_pos-global_position).length() < velocity.length():
+		linear_velocity = linear_velocity.lerp(target_vel, acceleration*2*delta)
+		if (target_pos-global_position).length() < linear_velocity.length():
 			charging = false
 	else:
 		var diff = (player.global_position-global_position)
@@ -31,9 +35,8 @@ func _physics_process(delta: float) -> void:
 			charging = true
 		else:
 			var ang = diff.normalized().angle()
-			velocity = velocity.lerp(Vector2(0.5,0.5).rotated(ang)*speed, acceleration*delta)
-	move_and_slide()
-	look_at(global_position + velocity)
+			linear_velocity = linear_velocity.lerp(Vector2(0.5,0.5).rotated(ang)*speed, acceleration*delta)
+	look_at(global_position + linear_velocity)
 	# Wrapping
 	if wrapping:
 		global_position.x = wrapf(global_position.x, 0, screen_size.x)

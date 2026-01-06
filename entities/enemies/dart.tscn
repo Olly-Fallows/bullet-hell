@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qnxedrwd54f"]
+[gd_scene load_steps=10 format=3 uid="uid://b7qnxedrwd54f"]
 
 [ext_resource type="Texture2D" uid="uid://dqhbujv8h6fql" path="res://assets/sprites/dart.png" id="1_k5csa"]
 [ext_resource type="Script" uid="uid://c8ybf5d5lis5h" path="res://entities/enemies/dart.gd" id="1_kvdw3"]
 [ext_resource type="Script" uid="uid://bhetfwiq1crmb" path="res://scripts/util/mirror_sprite.gd" id="3_5w71j"]
 [ext_resource type="Script" uid="uid://c3j028e7gb1jb" path="res://scripts/types/Hurtbox.gd" id="4_7ydiy"]
 [ext_resource type="Script" uid="uid://dhfg2wy17g1kx" path="res://scripts/types/Health.gd" id="4_tegqy"]
+[ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="6_338x4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5w71j"]
 radius = 6.0
@@ -12,7 +13,9 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tegqy"]
 radius = 11.0
 
-[node name="Dart" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5omra"]
+
+[node name="Dart" type="RigidBody2D"]
 script = ExtResource("1_kvdw3")
 
 [node name="Dart" type="Sprite2D" parent="."]
@@ -27,8 +30,17 @@ script = ExtResource("4_tegqy")
 metadata/_custom_type_script = "uid://dhfg2wy17g1kx"
 
 [node name="Hurtbox" type="Area2D" parent="Health"]
+collision_layer = 2
 script = ExtResource("4_7ydiy")
 metadata/_custom_type_script = "uid://c3j028e7gb1jb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hurtbox"]
 shape = SubResource("CircleShape2D_tegqy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("6_338x4")
+metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_5omra")

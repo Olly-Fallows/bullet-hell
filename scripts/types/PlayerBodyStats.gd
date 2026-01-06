@@ -1,10 +1,22 @@
 extends Node2D
 class_name PlayerBodyStats
 
-var max_health: float = 1
+signal dead
+
+var max_health: float = 4
 @onready
 var health: float = max_health
 var size: float = 1
 var speed: float = 50
 var turn_speed: float = 3.1
 var acceloration: float = 1
+
+func _ready() -> void:
+	$Hurtbox.hurt.connect(hurt)
+
+func hurt(box: Hitbox):
+	health -= box.damage
+	SignalBus.health_changed.emit(health, max_health)
+	if health <= 0:
+		dead.emit()
+	

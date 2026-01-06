@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready
-var player: CharacterBody2D = $".."
+var player: RigidBody2D = $".."
 @onready
 var attack_stats: PlayerAttackStats = $"../PlayerAttackStats"
 var last_shot: float = 0
@@ -18,9 +18,11 @@ func shoot():
 		pass
 	else:
 		for a in range(attack_stats.shot_count):
-			var b = attack_stats.bullet.instantiate()
-			b.velocity = player.velocity + Vector2(attack_stats.shot_speed, 0).rotated(global_rotation+randf_range(-attack_stats.shot_spread, attack_stats.shot_spread))
+			var b := attack_stats.bullet.instantiate()
+			b.velocity = player.linear_velocity + Vector2(attack_stats.shot_speed, 0).rotated(global_rotation+randf_range(-attack_stats.shot_spread, attack_stats.shot_spread))
 			b.damage = attack_stats.shot_damage
 			b.ttl = attack_stats.shot_range
 			get_tree().current_scene.add_child(b)
 			b.global_position = global_position
+			b.collision_layer = 1
+			b.collision_mask = 2
