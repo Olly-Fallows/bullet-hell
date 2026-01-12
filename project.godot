@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://scripts/globals/SignalBus.gd"
+Utils="*res://scripts/globals/Utils.gd"
 
 [display]
 

@@ -12,8 +12,6 @@ var wrapping: bool = false
 
 @onready
 var player: Player = get_tree().get_first_node_in_group("player")
-@onready 
-var screen_size = get_viewport_rect().size
 
 func _ready() -> void:
 	$Health.dead.connect(queue_free)
@@ -39,11 +37,12 @@ func _physics_process(delta: float) -> void:
 	look_at(global_position + linear_velocity)
 	# Wrapping
 	if wrapping:
-		global_position.x = wrapf(global_position.x, 0, screen_size.x)
-		global_position.y = wrapf(global_position.y, 0, screen_size.y)
+		global_position.x = wrapf(global_position.x, Utils.camera_rect.position.x, Utils.camera_rect.end.x)
+		global_position.y = wrapf(global_position.y, Utils.camera_rect.position.y, Utils.camera_rect.end.y)
 	else:
-		if global_position.x < screen_size.x:
-			if global_position.y < screen_size.y:
-				if global_position.x > 0:
-					if global_position.y > 0:
+		if global_position.x < Utils.camera_rect.end.x-32:
+			if global_position.y < Utils.camera_rect.end.y-32:
+				if global_position.x > Utils.camera_rect.position.x+32:
+					if global_position.y > Utils.camera_rect.position.y+32:
 						wrapping = true
+						$Dart.mirroring = true

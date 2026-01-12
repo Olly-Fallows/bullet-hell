@@ -7,13 +7,14 @@
 [ext_resource type="Script" uid="uid://dhfg2wy17g1kx" path="res://scripts/types/Health.gd" id="4_tegqy"]
 [ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="6_338x4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5w71j"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_338x4"]
+size = Vector2(31, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tegqy"]
-radius = 11.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5omra"]
+size = Vector2(31, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5omra"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5dx4"]
+size = Vector2(31, 14)
 
 [node name="Dart" type="RigidBody2D"]
 script = ExtResource("1_kvdw3")
@@ -21,9 +22,11 @@ script = ExtResource("1_kvdw3")
 [node name="Dart" type="Sprite2D" parent="."]
 texture = ExtResource("1_k5csa")
 script = ExtResource("3_5w71j")
+mirroring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5w71j")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_338x4")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("4_tegqy")
@@ -35,7 +38,8 @@ script = ExtResource("4_7ydiy")
 metadata/_custom_type_script = "uid://c3j028e7gb1jb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hurtbox"]
-shape = SubResource("CircleShape2D_tegqy")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5omra")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -43,4 +47,5 @@ script = ExtResource("6_338x4")
 metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_5omra")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_d5dx4")

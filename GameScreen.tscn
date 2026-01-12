@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxj2mprf2rsbd"]
+[gd_scene load_steps=4 format=3 uid="uid://cxj2mprf2rsbd"]
 
 [ext_resource type="Script" uid="uid://x2g37lloyg85" path="res://game_screen.gd" id="1_qufq8"]
 [ext_resource type="PackedScene" uid="uid://cfxhmt4lrnxyf" path="res://entities/player/Player.tscn" id="1_vau7r"]
+[ext_resource type="Script" uid="uid://bu84blqsnx0hi" path="res://camera_2d.gd" id="3_qufq8"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_qufq8")
@@ -12,3 +13,8 @@ position = Vector2(253, 140)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(512, 288)
+zoom = Vector2(3, 3)
+script = ExtResource("3_qufq8")

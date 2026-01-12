@@ -1,8 +1,5 @@
 extends Node2D
 
-@onready 
-var screen_size = get_viewport_rect().size
-
 var dart: PackedScene = preload("res://entities/enemies/dart.tscn")
 
 func _ready() -> void:
@@ -13,10 +10,10 @@ func spawn_mob():
 	add_child(d)
 	match randi_range(0, 3):
 		0:
-			d.global_position = Vector2(0,randf_range(screen_size.y,0))
+			d.global_position = Vector2(Utils.camera_rect.position.x-32,randf_range(Utils.camera_rect.end.y,Utils.camera_rect.position.y))
 		1:
-			d.global_position = Vector2(screen_size.x,randf_range(screen_size.y,0))
+			d.global_position = Vector2(Utils.camera_rect.end.x+32,randf_range(Utils.camera_rect.end.y,Utils.camera_rect.position.y))
 		2:
-			d.global_position = Vector2(randf_range(screen_size.x,0), 0)
+			d.global_position = Vector2(randf_range(Utils.camera_rect.end.x,Utils.camera_rect.position.x), Utils.camera_rect.position.y-32)
 		3:
-			d.global_position = Vector2(randf_range(screen_size.x,0), screen_size.y)
+			d.global_position = Vector2(randf_range(Utils.camera_rect.end.x,Utils.camera_rect.position.x), Utils.camera_rect.end.y+32)
