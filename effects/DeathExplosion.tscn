@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwqt73updja23"]
+
+[ext_resource type="Texture2D" uid="uid://bpj0xkbgxly82" path="res://assets/berry-nebula-1x.png" id="1_1mqci"]
+[ext_resource type="Script" uid="uid://cg3gqvwqnijwk" path="res://effects/delete_on_end.gd" id="1_n0h03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb2cu"]
+atlas = ExtResource("1_1mqci")
+region = Rect2(4, 0, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1mqci"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 30.000002
+
+[node name="DeathExplosion" type="GPUParticles2D"]
+emitting = false
+amount = 50
+texture = SubResource("AtlasTexture_fb2cu")
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1mqci")
+script = ExtResource("1_n0h03")

@@ -10,6 +10,7 @@ size = Vector2(4, 4)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_yvat8")
+look_at_dir = true
 metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

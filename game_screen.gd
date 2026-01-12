@@ -1,12 +1,14 @@
 extends Node2D
 
-var dart: PackedScene = preload("res://entities/enemies/dart.tscn")
+var dart: PackedScene = preload("res://entities/enemies/Dart.tscn")
+var small_astroid: PackedScene = preload("res://entities/enemies/SmallAstroid.tscn")
 
 func _ready() -> void:
-	$Timer.timeout.connect(spawn_mob)
+	$Timer.timeout.connect(func():
+		spawn_mob(small_astroid))
 
-func spawn_mob():
-	var d = dart.instantiate()
+func spawn_mob(mob: PackedScene):
+	var d = mob.instantiate()
 	add_child(d)
 	match randi_range(0, 3):
 		0:

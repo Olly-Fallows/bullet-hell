@@ -12,6 +12,9 @@ var percing: bool = false
 @export
 var velocity: Vector2 = Vector2()
 
+@export
+var look_at_dir: bool = false
+
 @onready 
 var screen_size = get_viewport_rect().size
 
@@ -23,6 +26,8 @@ func _ready() -> void:
 			hit.emit(area as Hurtbox)
 			if not percing:
 				queue_free())
+	if look_at_dir:
+		look_at(global_position+velocity)
 
 func _physics_process(delta: float) -> void:
 	global_position += velocity * delta

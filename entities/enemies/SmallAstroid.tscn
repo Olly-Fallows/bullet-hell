@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dubv1cikrrlfm"]
+
+[ext_resource type="Script" uid="uid://bj0334yjepydt" path="res://entities/enemies/small_astroid.gd" id="1_s74kv"]
+[ext_resource type="Texture2D" uid="uid://4pu0slge2uvf" path="res://assets/sprites/astroids/small-1.png" id="2_qeoxj"]
+[ext_resource type="Script" uid="uid://c3j028e7gb1jb" path="res://scripts/types/Hurtbox.gd" id="3_qeoxj"]
+[ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="4_45ie8"]
+[ext_resource type="Script" uid="uid://dhfg2wy17g1kx" path="res://scripts/types/Health.gd" id="4_t0416"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0416"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8iyer"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45ie8"]
+radius = 7.071068
+
+[node name="SmallAstroid" type="RigidBody2D"]
+angular_damp_mode = 1
+script = ExtResource("1_s74kv")
+
+[node name="Small1" type="Sprite2D" parent="."]
+texture = ExtResource("2_qeoxj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("4_45ie8")
+metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_t0416")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8iyer")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("4_t0416")
+metadata/_custom_type_script = "uid://dhfg2wy17g1kx"
+
+[node name="Hurtbox" type="Area2D" parent="Health"]
+collision_layer = 2
+script = ExtResource("3_qeoxj")
+metadata/_custom_type_script = "uid://c3j028e7gb1jb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hurtbox"]
+shape = SubResource("CircleShape2D_45ie8")

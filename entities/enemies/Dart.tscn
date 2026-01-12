@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dqhbujv8h6fql" path="res://assets/sprites/dart.png" id="1_k5csa"]
 [ext_resource type="Script" uid="uid://c8ybf5d5lis5h" path="res://entities/enemies/dart.gd" id="1_kvdw3"]
-[ext_resource type="Script" uid="uid://bhetfwiq1crmb" path="res://scripts/util/mirror_sprite.gd" id="3_5w71j"]
+[ext_resource type="Script" uid="uid://bhetfwiq1crmb" path="res://scripts/types/MirrorSprite.gd" id="3_5w71j"]
 [ext_resource type="Script" uid="uid://c3j028e7gb1jb" path="res://scripts/types/Hurtbox.gd" id="4_7ydiy"]
 [ext_resource type="Script" uid="uid://dhfg2wy17g1kx" path="res://scripts/types/Health.gd" id="4_tegqy"]
 [ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="6_338x4"]

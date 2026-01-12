@@ -1,5 +1,6 @@
 extends Node2D
 
+var death_explosion: PackedScene = preload("res://effects/DeathExplosion.tscn")
 
 @onready 
 var _screen_size = get_viewport_rect().size
@@ -16,3 +17,8 @@ func _process(_delta: float) -> void:
 func _update_camera_rect() -> void:
 	_camera.get_screen_center_position()
 	camera_rect = Rect2i(_camera.get_screen_center_position()-(_screen_size/_camera.zoom)/2, _screen_size/_camera.zoom)
+
+func spawn_explosion(pos: Vector2):
+	var e = death_explosion.instantiate()
+	get_tree().current_scene.add_child(e)
+	e.global_position = pos

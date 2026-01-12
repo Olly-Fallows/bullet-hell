@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfxhmt4lrnxyf"]
+[gd_scene load_steps=14 format=3 uid="uid://cfxhmt4lrnxyf"]
 
 [ext_resource type="Script" uid="uid://bktrblpjrdtuu" path="res://entities/player/player.gd" id="1_eaotn"]
 [ext_resource type="Texture2D" uid="uid://djgodn5qqphkb" path="res://assets/sprites/player-ship.png" id="1_mab2k"]
-[ext_resource type="Script" uid="uid://bhetfwiq1crmb" path="res://scripts/util/mirror_sprite.gd" id="3_4pwj0"]
+[ext_resource type="Script" uid="uid://bhetfwiq1crmb" path="res://scripts/types/MirrorSprite.gd" id="3_4pwj0"]
 [ext_resource type="Script" uid="uid://b6vfcjha302s0" path="res://scripts/types/PlayerBodyStats.gd" id="3_g3lhm"]
 [ext_resource type="Script" uid="uid://bj21e4ryiyrs7" path="res://scripts/types/PlayerAttackStats.gd" id="4_4pwj0"]
 [ext_resource type="Script" uid="uid://c1psqytc4e2dd" path="res://entities/player/gun.gd" id="6_4pwj0"]
 [ext_resource type="Script" uid="uid://c3j028e7gb1jb" path="res://scripts/types/Hurtbox.gd" id="7_fmb3c"]
+[ext_resource type="Texture2D" uid="uid://bpj0xkbgxly82" path="res://assets/berry-nebula-1x.png" id="8_rl6fg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rl6fg"]
 radius = 8.0
@@ -14,8 +15,26 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pwj0"]
 radius = 7.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q57vx"]
+atlas = ExtResource("8_rl6fg")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q57vx"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak4un"]
+atlas = ExtResource("8_rl6fg")
+region = Rect2(0, 0, 1, 1)
+
 [node name="Player" type="RigidBody2D" groups=["player"]]
 linear_damp = 0.1
+angular_damp = 1.0
 script = ExtResource("1_eaotn")
 
 [node name="PlayerShip" type="Sprite2D" parent="."]
@@ -44,3 +63,19 @@ script = ExtResource("6_4pwj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4pwj0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-8, -5)
+amount = 10
+texture = SubResource("AtlasTexture_q57vx")
+lifetime = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q57vx")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-8, 5)
+amount = 10
+texture = SubResource("AtlasTexture_ak4un")
+lifetime = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q57vx")

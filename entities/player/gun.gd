@@ -23,6 +23,12 @@ func shoot():
 			b.damage = attack_stats.shot_damage
 			b.ttl = attack_stats.shot_range
 			get_tree().current_scene.add_child(b)
-			b.global_position = global_position
+			b.global_position = screen_wrap(global_position)
 			b.collision_layer = 1
 			b.collision_mask = 2
+
+func screen_wrap(pos: Vector2) -> Vector2:
+		return Vector2(
+			wrapf(pos.x, Utils.camera_rect.position.x, Utils.camera_rect.end.x),
+			wrapf(pos.y, Utils.camera_rect.position.y, Utils.camera_rect.end.y)
+		)
