@@ -11,9 +11,6 @@ var thrusters: Array[GPUParticles2D] = [
 	$GPUParticles2D, $GPUParticles2D2
 ]
 
-var xp: int
-var level: int
-
 func _ready() -> void:
 	wrapping = true
 	body_stats.dead.connect(func():

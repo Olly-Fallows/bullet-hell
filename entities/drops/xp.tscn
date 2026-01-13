@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxdlcem6cubtp"]
+
+[ext_resource type="Texture2D" uid="uid://bpj0xkbgxly82" path="res://assets/berry-nebula-1x.png" id="1_jvf1d"]
+[ext_resource type="Script" uid="uid://cntufnay8rbvw" path="res://entities/drops/xp.gd" id="1_u3sxw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3sxw"]
+atlas = ExtResource("1_jvf1d")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvf1d"]
+atlas = ExtResource("1_jvf1d")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u3sxw"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvf1d"]
+radius = 4.0
+
+[node name="Xp" type="Area2D"]
+script = ExtResource("1_u3sxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_u3sxw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture = SubResource("AtlasTexture_jvf1d")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_u3sxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jvf1d")

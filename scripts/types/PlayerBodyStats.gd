@@ -15,6 +15,7 @@ func _ready() -> void:
 	$Hurtbox.hurt.connect(hurt)
 
 func hurt(box: Hitbox):
+	Utils.screen_freeze(0.5)
 	health -= box.damage
 	SignalBus.health_changed.emit(health, max_health)
 	if health <= 0:

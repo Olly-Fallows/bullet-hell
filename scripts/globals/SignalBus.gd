@@ -4,3 +4,5 @@ extends Node
 signal health_changed(health: float, max_health: float)
 @warning_ignore("unused_signal")
 signal xp_changed(xp: int, xp_needed: int)
+@warning_ignore("unused_signal")
+signal level_changed(level: int)

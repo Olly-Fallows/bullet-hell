@@ -36,6 +36,7 @@ region = Rect2(0, 0, 1, 1)
 linear_damp = 0.1
 angular_damp = 1.0
 script = ExtResource("1_eaotn")
+wrapping = null
 
 [node name="PlayerShip" type="Sprite2D" parent="."]
 texture = ExtResource("1_mab2k")

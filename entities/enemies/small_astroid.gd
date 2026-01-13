@@ -9,7 +9,8 @@ func _ready() -> void:
 	$Health.dead.connect(die)
 
 func die() -> void:
-	Utils.spawn_explosion(global_position)
+	Utils.spawn_explosion.call_deferred(global_position)
+	Utils.spawn_xp.call_deferred(global_position, 1)
 	queue_free()
 
 func randomise_velocity():
