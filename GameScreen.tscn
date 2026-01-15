@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxj2mprf2rsbd"]
+[gd_scene load_steps=6 format=3 uid="uid://cxj2mprf2rsbd"]
 
 [ext_resource type="Script" uid="uid://x2g37lloyg85" path="res://game_screen.gd" id="1_qufq8"]
 [ext_resource type="PackedScene" uid="uid://cfxhmt4lrnxyf" path="res://entities/player/Player.tscn" id="1_vau7r"]
 [ext_resource type="Script" uid="uid://bu84blqsnx0hi" path="res://camera_2d.gd" id="3_qufq8"]
+[ext_resource type="Texture2D" uid="uid://mqvp3hjpruro" path="res://assets/Background-1.png" id="4_bdpf8"]
+[ext_resource type="Texture2D" uid="uid://dx2k01o0fxu0i" path="res://assets/Background-2.png" id="5_0n56p"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_qufq8")
@@ -18,3 +20,21 @@ autostart = true
 offset = Vector2(512, 288)
 zoom = Vector2(3, 3)
 script = ExtResource("3_qufq8")
+
+[node name="Back" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1024, 576)
+
+[node name="Sprite2D" type="Sprite2D" parent="Back"]
+texture = ExtResource("4_bdpf8")
+
+[node name="Nebula" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1024, 576)
+autoscroll = Vector2(3, 5)
+follow_viewport = false
+ignore_camera_scroll = true
+screen_offset = Vector2(575.51, 406.805)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nebula"]
+texture = ExtResource("5_0n56p")
