@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxj2mprf2rsbd"]
+[gd_scene load_steps=7 format=3 uid="uid://cxj2mprf2rsbd"]
 
-[ext_resource type="Script" uid="uid://x2g37lloyg85" path="res://game_screen.gd" id="1_qufq8"]
+[ext_resource type="Script" uid="uid://x2g37lloyg85" path="res://scripts/game_screen.gd" id="1_qufq8"]
 [ext_resource type="PackedScene" uid="uid://cfxhmt4lrnxyf" path="res://entities/player/Player.tscn" id="1_vau7r"]
-[ext_resource type="Script" uid="uid://bu84blqsnx0hi" path="res://camera_2d.gd" id="3_qufq8"]
+[ext_resource type="Script" uid="uid://bu84blqsnx0hi" path="res://scripts/camera_2d.gd" id="3_qufq8"]
+[ext_resource type="PackedScene" uid="uid://csu58e6t1w3qt" path="res://ui/LevelBar.tscn" id="4_0n56p"]
 [ext_resource type="Texture2D" uid="uid://mqvp3hjpruro" path="res://assets/Background-1.png" id="4_bdpf8"]
 [ext_resource type="Texture2D" uid="uid://dx2k01o0fxu0i" path="res://assets/Background-2.png" id="5_0n56p"]
 
@@ -38,3 +39,12 @@ screen_offset = Vector2(575.51, 406.805)
 
 [node name="Sprite2D" type="Sprite2D" parent="Nebula"]
 texture = ExtResource("5_0n56p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelBar" parent="CanvasLayer" instance=ExtResource("4_0n56p")]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -256.0
+offset_bottom = -552.0

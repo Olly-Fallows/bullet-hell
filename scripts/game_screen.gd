@@ -5,7 +5,7 @@ var small_astroid: PackedScene = preload("res://entities/enemies/SmallAstroid.ts
 
 func _ready() -> void:
 	$Timer.timeout.connect(func():
-		spawn_mob(small_astroid))
+		spawn_mob(dart))
 
 func spawn_mob(mob: PackedScene):
 	var d = mob.instantiate()

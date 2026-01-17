@@ -19,7 +19,12 @@ func shoot():
 	else:
 		for a in range(attack_stats.shot_count):
 			var b := attack_stats.bullet.instantiate()
-			b.velocity = player.linear_velocity + Vector2(attack_stats.shot_speed, 0).rotated(global_rotation+randf_range(-attack_stats.shot_spread, attack_stats.shot_spread))
+			b.velocity = Vector2(attack_stats.shot_speed, 0).rotated(global_rotation+randf_range(-attack_stats.shot_spread, attack_stats.shot_spread))
+			var dot = player.linear_velocity.normalized().dot(b.velocity.normalized())
+			if dot > 0:
+				b.velocity += player.linear_velocity*dot
+			else :
+				b.velocity += player.linear_velocity*-dot*0.5
 			b.damage = attack_stats.shot_damage
 			b.ttl = attack_stats.shot_range
 			get_tree().current_scene.add_child(b)

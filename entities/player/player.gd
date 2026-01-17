@@ -24,8 +24,9 @@ func _physics_process(delta: float) -> void:
 		rotate(body_stats.turn_speed * turn * delta)
 	# Move
 	if input_dir:
-		for t in thrusters:
-			t.emitting = true
+		if input_dir.x > 0:
+			for t in thrusters:
+				t.emitting = true
 		var forward = input_dir.rotated(rotation) * body_stats.speed
 		linear_velocity = linear_velocity.lerp(forward, body_stats.acceloration * delta)
 	else:

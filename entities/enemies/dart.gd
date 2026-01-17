@@ -18,7 +18,8 @@ func _ready() -> void:
 		die())
 
 func die() -> void:
-	Utils.spawn_explosion(global_position)
+	Utils.spawn_explosion.call_deferred(global_position)
+	Utils.spawn_xp.call_deferred(global_position, 5)
 	queue_free()
 
 func _physics_process(delta: float) -> void:

@@ -10,7 +10,5 @@ var shot_count: int = 1
 var shot_size: float = 4
 var is_beam: bool = false
 
-var shot_effects: Array[Effect]
-var firing_effecct: Array[Effect]
 
 var bullet: PackedScene = preload("res://entities/projectiles/slug.tscn")

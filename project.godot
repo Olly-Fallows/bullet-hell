@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Bullet Hell"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.050980393, 0, 0.101960786, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -83,4 +84,4 @@ strafe_right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.050980393, 0, 0.101960786, 1)

@@ -8,13 +8,13 @@
 [ext_resource type="Script" uid="uid://cu4cowa7n1ifp" path="res://scripts/types/Hitbox.gd" id="6_338x4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_338x4"]
-size = Vector2(31, 14)
+size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5omra"]
-size = Vector2(31, 14)
+size = Vector2(18, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5dx4"]
-size = Vector2(31, 14)
+size = Vector2(16, 8)
 
 [node name="Dart" type="RigidBody2D"]
 script = ExtResource("1_kvdw3")
@@ -25,7 +25,6 @@ script = ExtResource("3_5w71j")
 mirroring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_338x4")
 
 [node name="Health" type="Node2D" parent="."]
@@ -38,7 +37,6 @@ script = ExtResource("4_7ydiy")
 metadata/_custom_type_script = "uid://c3j028e7gb1jb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hurtbox"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_5omra")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -47,5 +45,4 @@ script = ExtResource("6_338x4")
 metadata/_custom_type_script = "uid://cu4cowa7n1ifp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_d5dx4")

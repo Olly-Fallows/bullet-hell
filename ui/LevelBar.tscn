@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csu58e6t1w3qt"]
+
+[ext_resource type="Theme" uid="uid://blcvmhdrqarsc" path="res://ui/theme.tres" id="1_xuawr"]
+[ext_resource type="Script" uid="uid://cp8jshopa0irf" path="res://ui/level_bar.gd" id="2_41vr6"]
+
+[node name="LevelBar" type="ProgressBar"]
+offset_left = 256.0
+offset_top = 16.0
+offset_right = 768.0
+offset_bottom = 24.0
+theme = ExtResource("1_xuawr")
+show_percentage = false
+script = ExtResource("2_41vr6")
